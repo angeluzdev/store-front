@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  max-width: 1450px;
+  min-width: 350px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: goldenrod;
+}
+nav h2 {
+  font-size: 38px;
+}
+nav li {
+  list-style: none;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+#shopping__container {
+  max-width: 1450px;
+  min-width: 350px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+#shopping__container .info__header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+#shopping__container .info__products .info__products--item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+#shopping__info {
+  margin: 20px auto;
+  padding: 10px;
+  width: 90%;
+  background-color: #EEEEEE;
+  border-radius: 20px;
+  box-shadow: 0 0 5px gainsboro;
+}
+#shopping__info .info__header {
+  margin-bottom: 10px;
+  color: cadetblue;
+  font-size: 20px;
+}
+#shopping__info .item__delete > div{
+  padding: 5px;
+  color: white;
+  background-color: crimson;
+  border-radius: 5px;
+  cursor: pointer;
+}

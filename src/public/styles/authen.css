@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  max-width: 1450px;
+  min-width: 350px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: goldenrod;
+}
+nav h2 {
+  font-size: 38px;
+}
+nav li {
+  list-style: none;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.signin__container {
+  max-width: 1450px;
+  min-width: 350px;
+  width: 95%;
+  margin: 50px auto;
+  display: grid;
+  place-items: center;
+}
+.signin__container form {
+  width: 310px;
+  padding: 25px 15px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  border: 1px solid gray;
+}
+
+.signin__container input {
+  margin-top: 8px;
+  padding: 5px;
+  border: 1px solid rgb(1, 149, 175);
+  outline: none;
+  border-radius: 4px;
+}
+.signin__container form button {
+  padding: 7px;
+  outline: none;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#message-error {
+  width: 180px;
+  margin: 8px 0;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  background-color: cadetblue;
+}

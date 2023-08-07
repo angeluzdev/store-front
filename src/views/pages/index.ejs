@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <section id="section-search">
+    <div class="container-search">
+      <form id="form-search" action="/search" method="get">
+        <div class="search__input">
+          <input id="input-search" type="text" name="valueSearch">
+        </div>
+        <button class="fa-solid fa-magnifying-glass"></button>
+      </form>
+    </div>
+  </section>
+
+  <section id="section-products">
+    <div class="products__container">
+      <h2>Productos:</h2>
+      <div class="products_items">
+        <% products.forEach(e => { %>
+          <article>
+            <img src="<%= e.image %>" alt="">
+            <h3 class="item__title"><a href="/product/<%=e.id%>"><%= e.title %></a></h3>
+            <div class="item__info">
+              <p class="item__marca"><%= e.brand %></p>
+              <p class="item__price"><%= e.price %>$</p>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="section-numbers">
+    <div>
+      1
+    </div>
+    <div>
+      2
+    </div>
+  </section>
+  <section id="sectio_categories">
+
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

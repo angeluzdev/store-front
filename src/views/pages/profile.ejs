@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/profile.css">
+</head>
+<body>
+
+  <header>
+    <%- include('../partials/header.ejs'); %>
+  </header>
+
+  <section id="section-welcome">
+    <div>
+      <h1>Bienvenido, <%= user.username %></h1>
+      <a href="/logout">Cerrar sesión</a>
+    </div>
+  </section>
+
+  <section id="section-all-orders">
+    <div class="orders__container">
+      <h2>Tus compras:</h2>
+      <div class="orders__content">
+        <!-- <details class="content__item--container">
+          <summary>
+            <p>N: 1</p>
+            <p>Date: 23/04/2034</p>
+            <p>Monto: 1234.45</p>
+          </summary>
+          <div class="item__content--order">
+            <p>Computadora maxin</p>
+            <p>2</p>
+            <p>23.40</p>
+          </div>
+        </details> -->
+
+      </div>
+    </div>
+  </section>
+
+  <script src="js/profile.js">
+
+  </script>
+</body>
+</html>
