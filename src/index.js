@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use((req, res ,next) => {
   if(app.locals.user == undefined || app.locals.user == null) app.locals.user = undefined;
-  app.locals.user ??= undefined;
+ 
   console.log(app.locals.user);
   next();
 })
