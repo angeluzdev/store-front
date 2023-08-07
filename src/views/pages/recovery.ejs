@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/authen.css">
+</head>
+<body>
+
+  <header>
+    <%- include('../partials/header.ejs'); %>
+  </header>
+
+  <main>
+
+    <% if(error != undefined) {%>
+      <div id="message-error">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <section class="section-signin">
+      <div class="signin__container">
+        <form action="/recovery" method="post">
+          <div>
+              <label for="">Email de la cuenta a recuperar: </label>
+            <div>
+              <input type="email" name="email" required>
+            </div>
+          </div>         
+          <button>Enviar</button>
+        </form>
+      </div>
+    </section>    
+  </main>
+</body>
+</html>

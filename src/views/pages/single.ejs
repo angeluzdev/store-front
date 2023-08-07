@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/styles/single.css">
+</head>
+<body>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main> 
+    <% if(product != undefined) { %>
+    <section id="product-info">
+      <div class="product__container">
+        <div class="product__info">
+          <div class="info__img">
+            <img src="<%= product.image %>" alt="">
+          </div>
+          <div class="info__description" data-idP="<%= product.id %>">
+            <h3 id="product__title"><%= product.title %></h3>
+            <div class="info__description--brand">
+              <p id="product__brand"><%= product.brand %></p>
+              <p id="product__category" data-id="<%= product.category.id %>"><%= product.category.category_name %></p>
+            </div>
+            <p id="product__description"><%= product.description %></p>
+            <p id="product__price"><%= product.price %>$</p>
+            <div id="product__button">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <p>ADD TO CART</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product__reviews-container">
+        <h3>Coments <%= product.reviews.length %></h3>
+        <div class="product__review--add">
+          <h4>ADD COMMENT</h4>
+          <div class="comment__add-container">
+            <form>
+              <div>
+                <textarea name="coment" placeholder="Your comment of this product"></textarea>
+              </div>
+              <button>Enviar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="product__reviews-content">
+
+          <% product.reviews.forEach(e => { %>
+            <div class="reviews__review-user">
+              <div class="review__info-user">
+                <h5><%= e.username %></h5>
+                <div class="review__date">
+                  <p>•</p>
+                  <p><%= new Date(e.create_at).toLocaleDateString() %></p>
+                </div>
+              </div>
+    
+              <div class="review__description">
+                <p><%= e.content %></p>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+    <% } else { %>
+      <div id="message-notFound">
+        <h4>NOT FOUND</h4>
+      </div>
+    <% } %>
+  </main>
+
+  <script src="/js/single.js"></script>
+
+</body>
+</html>

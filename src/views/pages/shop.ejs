@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/shop.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header>
+    <%- include('../partials/header.ejs'); %>
+  </header>
+
+  <main>
+    <section id="section-shopping">
+      <div id="shopping__container">
+        <div id="shopping__info">
+          <div class="info__header">
+            <h5>Product</h5>
+            <h5>Cantidad</h5>
+            <h5>Eliminar</h5>
+          </div>
+          <div class="info__products">
+            <!-- <div class="info__products--item">
+              <div class="item__title">
+                <h5 id="item__name">ASUS VivoBook Go 14</h5>
+              </div>
+              <div class="item__cantidad">
+                <input type="number" min="1" value="1">
+              </div>
+              <div class="item__delete">
+                <div class="div">
+                  delete
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <button id="shop-button">Comprar</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/shopping.js"></script>
+</body>
+</html>

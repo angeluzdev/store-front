@@ -1,0 +1,22 @@
+<% if(products.error == undefined && products.length >= 1) { %>
+  <h2 id="products__category-title"><%= search %></h3>
+  <div class="products__container">
+    <div class="products__items">
+      <%products.forEach( e => {%>
+        <article>
+          <img src="<%= e.image %>" alt="">
+          <h3 class="item__title"><a href="/product/<%= e.id %>"><%= e.title %></a></h3>
+          <div class="item__info">
+            <p class="item__marca"><%= e.brand %></p>
+            <p class="item__price"><%= e.price %>$</p>
+          </div>
+        </article>
+      <%})%>
+    </div>
+  </div>
+
+<% } else { %>
+  <div id="message-notFound">
+    <h4>NOT FOUND</h4>
+  </div>
+<% } %>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/authen.css">
+</head>
+<body>
+
+  <header>
+    <%- include('../partials/header.ejs'); %>
+  </header>
+
+  <main>
+
+    <% if(error != undefined) {%>
+      <div id="message-error">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <section class="section-signin">
+      <div class="signin__container">
+        <form action="/change-password?token=<%= token %>" method="post">
+          <div>
+              <label for="">Nueva contraseña: </label>
+            <div>
+              <input type="text" name="password" required>
+            </div>
+          </div>         
+          <button>Enviar</button>
+        </form>
+      </div>
+    </section>    
+  </main>
+</body>
+</html>
