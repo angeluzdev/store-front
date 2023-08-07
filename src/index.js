@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const API_URL = 'https://store-front-zio1.onrender.com/api/v1/'
+
 app.set('port', process.env.PORT | 4000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
@@ -33,7 +35,7 @@ const noAuthenticate = (req, res, next) => {
 }
 
 app.get('/', async (req, res) => {
-  const response = await fetch('https://store-proyect.onrender.com/api/v1/products?offset=0&limit=6');
+  const response = await fetch(`${API_URL}products?offset=0&limit=6`);
   const data = await response.json();
   res.render('pages', {
     products: data
@@ -47,7 +49,7 @@ app.get('/profile', isAuthenticate, async (req, res) => {
 app.get('/product/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const reponse = await fetch('https://store-proyect.onrender.com/api/v1/products/'+id);
+    const reponse = await fetch(`${API_URL}products/`+id);
     const data = await reponse.json();
 
     res.render('pages/single', {
@@ -64,7 +66,7 @@ app.get('/shopping', (req, res) => {
 
 app.get('/category/:category', async (req, res) => {
   const { category } = req.params;
-  const response = await fetch('https://store-proyect.onrender.com/api/v1/products/category/'+category);
+  const response = await fetch(`${API_URL}products/category/`+category);
   const data = await response.json();
 
   res.render('pages/presentation', {
@@ -75,7 +77,7 @@ app.get('/category/:category', async (req, res) => {
 
 app.get('/search', async (req, res) => {
   const { valueSearch } = req.query;
-  const response = await fetch('https://store-proyect.onrender.com/api/v1/products/title/'+valueSearch);
+  const response = await fetch(`${API_URL}products/title/`+valueSearch);
   const data = await response.json();
   res.render('pages/search', {
     products: data,
@@ -98,7 +100,7 @@ app.get('/signup', noAuthenticate, (req, res) => {
 app.post('/signin', noAuthenticate, async (req, res) => {
   try {
     const { email, password } = req.body;
-    const response = await fetch('https://store-proyect.onrender.com/api/v1/auth/signin', {
+    const response = await fetch(`${API_URL}auth/signin`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -127,7 +129,7 @@ app.post('/signup', noAuthenticate, async (req, res) => {
   try {
     const { email, password, username } = req.body;
     
-    const response = await fetch('https://store-proyect.onrender.com/api/v1/auth/signup', {
+    const response = await fetch(`${API_URL}auth/signup`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -169,7 +171,7 @@ app.post('/change-password', noAuthenticate, async (req, res) => {
   const { password } = req.body;
   const { token } = req.query;
 
-  const response = await fetch('https://store-proyect.onrender.com/api/v1/auth/change-password', {
+  const response = await fetch(`${API_URL}auth/change-password`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -190,7 +192,7 @@ app.post('/change-password', noAuthenticate, async (req, res) => {
 
 app.post('/recovery', noAuthenticate, async (req, res) => {
   const { email } = req.body;
-  const response = await fetch('https://store-proyect.onrender.com/api/v1/auth/recovery', {
+  const response = await fetch(`${API_URL}auth/recovery`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
