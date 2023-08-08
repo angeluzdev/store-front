@@ -76,13 +76,13 @@ document.addEventListener('change', e => {
 
 shopButton.addEventListener('click', async () => {
   try {
-    console.log('clickeado')
+    const [_, token] = document.cookie;
     const products = localStorage.getItem('shopping');
     const response = await fetch('https://store-proyect.onrender.com/api/v1/payment', {
       method: 'POST',
-      credentials: 'include',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: products
     });
