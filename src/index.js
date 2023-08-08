@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const API_URL = 'https://store-front-zio1.onrender.com/api/v1/'
+const API_URL = 'https://store-proyect.onrender.com/api/v1/'
 
 app.set('port', process.env.PORT | 4000);
 app.set('view engine', 'ejs');
