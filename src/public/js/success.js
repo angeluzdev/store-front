@@ -4,9 +4,9 @@ async function saveOrder() {
   console.log(products);
   const response = await fetch('https://store-proyect.onrender.com/api/v1/order-products', {
     method: 'POST',
-    'Authorization': `Bearer ${token}`,
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
+      'Authorization': `Bearer ${token}`
     },
     body: products
   })
