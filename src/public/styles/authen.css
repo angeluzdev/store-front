@@ -70,7 +70,7 @@ a {
 
 #message-error {
   width: 180px;
-  margin: 8px 0;
+  margin: 8px auto;
   padding: 10px;
   text-align: center;
   border-radius: 6px;

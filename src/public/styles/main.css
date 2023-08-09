@@ -33,6 +33,19 @@ a {
   text-decoration: none;
 }
 
+footer {
+  padding: 14px;
+  text-align: center;
+  background-color: cadetblue;
+}
+footer > div {
+  margin-top: 10px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
 #section-search .container-search{
   max-width: 1450px;
   min-width: 360px;

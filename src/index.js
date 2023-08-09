@@ -16,7 +16,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use((req, res ,next) => {
   if(app.locals.user == undefined || app.locals.user == null) app.locals.user = undefined;
  
-  console.log(app.locals.user);
   next();
 })
 
@@ -141,7 +140,7 @@ app.post('/signup', noAuthenticate, async (req, res) => {
       })
     })
     const data = await response.json();
-
+    
     if(data.error) throw new Error(data.message)
     
     app.locals.user = data.user;
@@ -182,7 +181,7 @@ app.post('/change-password', noAuthenticate, async (req, res) => {
     })
   })
   const data = await response.json();
-  console.log(data);
+  
   res.render('pages/change.ejs', {
     error: 'change password',
     token: undefined
@@ -191,8 +190,9 @@ app.post('/change-password', noAuthenticate, async (req, res) => {
 
 
 app.post('/recovery', noAuthenticate, async (req, res) => {
-  const { email } = req.body;
-  const response = await fetch(`${API_URL}auth/recovery`, {
+  try {
+    const { email } = req.body;
+    const response = await fetch(`${API_URL}auth/recovery`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -202,10 +202,17 @@ app.post('/recovery', noAuthenticate, async (req, res) => {
     })
   })
   const data = await response.json();
-  console.log(data);
+  
+  if(data.error) throw new Error('Email inexistente');
   res.render('pages/recovery', {
     error: 'Revisa tu correo'
   })
+  } catch (error) {
+    res.render('pages/recovery', {
+      error: error.message
+    })
+  }
+  
 })
 
 app.get('/success', isAuthenticate, (req, res) => {
@@ -218,6 +225,4 @@ app.get('/logout', isAuthenticate, (req, res) => {
   res.redirect('/');
 })
 
-app.listen(app.get('port'), () => {
-  console.log('server inicilizado en port:', app.get('port'))
-})
+app.listen(app.get('port'))
