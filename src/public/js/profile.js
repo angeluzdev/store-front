@@ -1,5 +1,5 @@
 async function getOrdersByUser() {
-  const [_, token] = document.cookie;
+  const [_, token] = document.cookie.split('=');
   const container = document.querySelector('.orders__content');
   const response = await fetch('https://store-proyect.onrender.com/api/v1/order-products/my-orders', {
     method: 'GET',

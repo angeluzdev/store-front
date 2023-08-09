@@ -12,14 +12,15 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', async (e) => {
   try {
     e.preventDefault();
+    const [_, token] = document.cookie.split('=');
     const coment = document.querySelector('textarea').value;
     const pid = location.href.split('/').pop();
     const response = await fetch('https://store-proyect.onrender.com/api/v1/reviews/add', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
-      credentials: "include",
       body: JSON.stringify({
         content: coment,
         product_id: pid
