@@ -202,7 +202,7 @@ app.post('/recovery', noAuthenticate, async (req, res) => {
     })
   })
   const data = await response.json();
-  
+  console.log(data);
   if(data.error) throw new Error('Email inexistente');
   res.render('pages/recovery', {
     error: 'Revisa tu correo'
