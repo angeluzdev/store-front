@@ -6,7 +6,7 @@ const path = require('path');
 
 const API_URL = 'https://store-front-zio1.onrender.com/api/v1/'
 
-app.set('port', process.env.PORT | 4000);
+app.set('port', process.env.PORT || 4000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
