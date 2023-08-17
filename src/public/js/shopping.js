@@ -78,7 +78,7 @@ shopButton.addEventListener('click', async () => {
   try {
     const [_, token] = document.cookie.split('=');
     const products = localStorage.getItem('shopping');
-    const response = await fetch('https://store-front-zio1.onrender.com/api/v1/payment', {
+    const response = await fetch('https://store-proyect.onrender.com/api/v1/payment', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
