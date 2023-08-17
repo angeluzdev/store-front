@@ -1,21 +1,26 @@
 const fetch = require('node-fetch')
 const express = require('express');
 const app = express();
+const parser = require('cookie-parser');
 const path = require('path');
 
-const API_URL = 'https://store-proyect.onrender.com/api/v1/'
+const API_URL = 'https://store-front-zio1.onrender.com/api/v1/'
 
 app.set('port', process.env.PORT | 4000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
+app.use(parser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.use((req, res ,next) => {
-  if(app.locals.user == undefined || app.locals.user == null) app.locals.user = undefined;
- 
+app.use(async (req, res ,next) => {
+  //if(app.locals.user == undefined || app.locals.user == null) app.locals.user = undefined;
+  const token = req.cookies.token_jwt
+  const userResponse = await fetch('https://store-front-zio1.onrender.com/api/v1/auth', {method: 'GET', headers: {'Authorization': `Bearer ${token}`}});
+  app.locals.user = await userResponse.json();
+  console.log(app.locals.user); 
   next();
 })
 
@@ -113,7 +118,6 @@ app.post('/signin', noAuthenticate, async (req, res) => {
     
     if(data.error) throw new Error(data.message);
 
-    app.locals.user = data.user;
     res.cookie('token_jwt', data.token);
     res.redirect('/profile');
   } catch (error) {
@@ -143,7 +147,6 @@ app.post('/signup', noAuthenticate, async (req, res) => {
     
     if(data.error) throw new Error(data.message)
     
-    app.locals.user = data.user;
     res.cookie('token_jwt', data.token);
     res.redirect('/profile');
   } catch (error) {
@@ -220,7 +223,6 @@ app.get('/success', isAuthenticate, (req, res) => {
 })
 
 app.get('/logout', isAuthenticate, (req, res) => {
-  app.locals.user = undefined;
   res.clearCookie('token_jwt');
   res.redirect('/');
 })
