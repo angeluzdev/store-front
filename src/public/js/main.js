@@ -1,4 +1,4 @@
-const URL_API = 'https://store-proyect.onrender.com/api/v1/'
+const URL_API = 'https://store-front-zio1.onrender.com/api/v1/'
 const containerProducts = document.querySelector('#section-products .products_items');
 const formSearch = document.querySelector('#form-search');
 const numbersSection = document.querySelector('#section-numbers');

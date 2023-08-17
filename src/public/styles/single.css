@@ -125,7 +125,7 @@ a {
   color: darkcyan;
 }
 #product-info .product__review--add form textarea {
-  width: 400px;
+  width: 350px;
   height: 120px;
   padding: 10px;
   outline: none;

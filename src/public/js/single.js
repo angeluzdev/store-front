@@ -1,4 +1,3 @@
-const URL_API = 'https://store-proyect.onrender.com';
 const buttonCart = document.querySelector('#product__button');
 const productDescription = document.querySelector('.info__description');
 
@@ -15,7 +14,7 @@ document.addEventListener('submit', async (e) => {
     const [_, token] = document.cookie.split('=');
     const coment = document.querySelector('textarea').value;
     const pid = location.href.split('/').pop();
-    const response = await fetch('https://store-proyect.onrender.com/api/v1/reviews/add', {
+    const response = await fetch('https://store-front-zio1.onrender.com/api/v1/reviews/add', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
