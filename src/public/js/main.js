@@ -1,4 +1,4 @@
-const URL_API = 'https://store-proyect.onrender.com/api/v1/'
+const URL_API = 'https://fake-store.azurewebsites.net/api/v1/'
 const containerProducts = document.querySelector('#section-products .products_items');
 const formSearch = document.querySelector('#form-search');
 const numbersSection = document.querySelector('#section-numbers');
@@ -53,7 +53,9 @@ async function getProducts(offset) {
 }
 
 numbersSection.addEventListener('click', (e) => {
+  console.log(e.target, 'elemento clickeado')
   if(e.target.nodeName === 'DIV') {
+    console.log(e.target.innerHTML, 'valor del elemento')
     getProducts(e.target.innerHTML - 1);
   }
 })
