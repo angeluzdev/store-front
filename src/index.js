@@ -42,7 +42,7 @@ app.get('/', async (req, res) => {
   const response = await fetch(`${API_URL}products?offset=0&limit=6`);
   const data = await response.json();
   res.render('pages', {
-    products: []
+    products: data
   });
 })
 
