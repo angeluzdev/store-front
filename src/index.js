@@ -23,6 +23,7 @@ app.use(async (req, res ,next) => {
   const token = req.cookies.token_jwt
   console.log('token', token)
   const userResponse = await fetch(`${API_URL}auth`, {method: 'GET', headers: {'Authorization': `Bearer ${token}`}});
+  console.log(userResponse, 'respuesta auth');
   app.locals.user = await userResponse.json();
   console.log(app.locals.user); 
   next();
