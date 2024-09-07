@@ -1,7 +1,9 @@
+import { URL_API } from "./api.js";
+
 async function getOrdersByUser() {
   const [_, token] = document.cookie.split('=');
   const container = document.querySelector('.orders__content');
-  const response = await fetch('https://fake-store.azurewebsites.net/api/v1/order-products/my-orders', {
+  const response = await fetch(`${URL_API}order-products/my-orders`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`

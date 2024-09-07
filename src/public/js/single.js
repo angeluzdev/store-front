@@ -1,6 +1,8 @@
+import { URL_API } from "./api.js";
+console.log(URL_API)
 const buttonCart = document.querySelector('#product__button');
 const productDescription = document.querySelector('.info__description');
-
+console.log(buttonCart)
 document.addEventListener('click', (e) => {
   if(e.target.id === 'product__category') {
     console.log(e.target.dataset.id);
@@ -14,7 +16,7 @@ document.addEventListener('submit', async (e) => {
     const [_, token] = document.cookie.split('=');
     const coment = document.querySelector('textarea').value;
     const pid = location.href.split('/').pop();
-    const response = await fetch('https://fake-store.azurewebsites.net/api/v1/reviews/add', {
+    const response = await fetch(`${URL_API}reviews/add`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

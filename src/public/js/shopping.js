@@ -1,3 +1,5 @@
+import { URL_API } from "./api.js";
+
 const buttonQty = document.querySelector('.item__cantidad');
 const shopButton = document.querySelector('#shop-button')
 
@@ -78,7 +80,7 @@ shopButton.addEventListener('click', async () => {
   try {
     const [_, token] = document.cookie.split('=');
     const products = localStorage.getItem('shopping');
-    const response = await fetch('https://fake-store.azurewebsites.net/api/v1/payment', {
+    const response = await fetch(`${URL_API}payment`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

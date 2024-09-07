@@ -3,9 +3,12 @@ const express = require('express');
 const app = express();
 const parser = require('cookie-parser');
 const path = require('path');
+const doten = require('dotenv');
 
-const API_URL = 'https://fake-store.azurewebsites.net/api/v1/'
-
+doten.config();
+//'https://fake-store.azurewebsites.net/api/v1/'
+const API_URL = process.env.API_URL;
+console.log(API_URL);
 app.set('port', process.env.PORT || 4000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
@@ -55,7 +58,6 @@ app.get('/product/:id', async (req, res) => {
     const { id } = req.params;
     const reponse = await fetch(`${API_URL}products/`+id);
     const data = await reponse.json();
-
     res.render('pages/single', {
       product: data[0]
     });

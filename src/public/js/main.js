@@ -1,4 +1,4 @@
-const URL_API = 'https://fake-store.azurewebsites.net/api/v1/'
+import { URL_API } from "./api.js";
 const containerProducts = document.querySelector('#section-products .products_items');
 const formSearch = document.querySelector('#form-search');
 const numbersSection = document.querySelector('#section-numbers');
